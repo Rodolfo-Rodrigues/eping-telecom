@@ -68,11 +68,11 @@ img{max-width: 100%;}
 }
 
 /*localização*/
-.localizacao{display: flex; justify-content: center; align-items: center; justify-content: space-around; background-color: lightgray; font-weight: bolder;padding: 15px;}
+.localizacao{width: 100%; display: flex; justify-content: center; align-items: center; justify-content: space-around; background-color: lightgray; font-weight: bolder;padding: 15px; }
 
 .localizacao h4{color:brown; font-size: 1.7em; text-align: center; padding: 15px;}
 
-.localizacao figure{margin: 25px;}
+.localizacao figure{margin: 25px auto;}
 
 .localizacao p{text-align: center; color:brown; font-size: 1.5em; padding:15px;}
 
