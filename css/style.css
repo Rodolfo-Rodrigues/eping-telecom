@@ -25,7 +25,7 @@ img{max-width: 100%;}
 .midias-sociais a:hover{color:#c3c63b; transition: 0.5s;}
 
 @media(max-width:700px){
-    .cabecalho{flex-direction: column; flex-wrap: wrap;}
+    .cabecalho{flex-direction: column; flex-wrap: wrap; flex-basis: 100%;}
     .cabecalho img{margin-top: -25px;}
     .midias-sociais{margin-top: -55px;}  
 }
@@ -79,7 +79,7 @@ img{max-width: 100%;}
 .localizacao iframe{width: 500px; height:400px; margin: 0 25px;}
 
 @media (max-width:700px){
-    .localizacao {flex-direction: column;}
+    .localizacao {flex-direction: column; flex-basis: 100%;}
     .localizacao figure{ margin: 0 auto;}
     .localizacao h4{font-size: 1.3em;}
     .localizacao iframe {width:300px; height: 250px; align-self: center; }
