@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calcule seu IMC</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      margin: 100px auto;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: auto;
+      background: chocolate;
+      padding: 30px;
+      box-shadow: 3px 3px 3px black;
+    }
+
+    form>input {
+      display: block;
+      margin: 15px 0;
+      height: 40px;
+      padding: 10px;
+      border-radius: 15px;
+      width: 260px;
+      border: 0;
+      outline: 0;
+    }
+
+    button[type=submit] {
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 15px;
+      border: 0;
+    }
+
+    h1 {
+      color: #fff;
+    }
+
+    #resultado {
+      color: #fff;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    @media screen and (max-width:768px) {
+      .container {
+        margin: 10px auto;
+        width: 95vw;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="container">
+    <h1>Calcule seu IMC</h1>
+    <form action="/" id="formulario" method="POST">
+      <input type="text" id="peso" name="peso" placeholder="Informe seu peso">
+      <input type="text" id="altura" name="altura" placeholder="Informe sua altura">
+      <button type="submit">calcular</button>
+    </form>
+
+    <div id="resultado"></div>
+  </section>
+
+  <script>
+    (() => {
+      const form = document.querySelector('#formulario')
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const peso = Number(document.querySelector('#peso').value)
+        const altura = Number(document.querySelector('#altura').value)
+        const imc = (peso / (altura ** 2)).toFixed(2)
+        const resultado = document.querySelector('#resultado')
+        const imcRespostas = [
+          'abaixo do peso',
+          'peso normal',
+          'sobrepeso',
+          'obesidade grau 1',
+          'obesidade grau 2',
+          'obesidade grau 3',
+        ]
+
+        function verificaPeso(peso) {
+          if (!peso) {
+            resultado.innerHTML = '<p>peso inválido</p>'
+          }
+        }
+        verificaPeso(peso)
+
+        function verificaAltura(altura) {
+          if (!altura) {
+            resultado.innerHTML = '<p>altura inválida</p>'
+          }
+        }
+        verificaAltura(altura)
+
+        function verificaPesoAltura(peso, altura) {
+          if (!altura && !peso) {
+            resultado.innerHTML = '<p>peso e altura inválidos</p>'
+          }
+        }
+        verificaPesoAltura(peso, altura)
+
+
+        function calculaIMC(imc) {
+          if (imc >= 40) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[5]}</p>`
+          } else if (imc >= 35) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[4]}</p>`
+          } else if (imc >= 30) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[3]}</p>`
+          } else if (imc >= 25) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[2]}</p>`
+          } else if (imc >= 18.5) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[1]}</p>`
+          } else if (imc < 18.5) {
+            resultado.innerHTML = `<p>O seu imc é ${imc} : ${imcRespostas[0]}</p>`
+          }
+        }
+        calculaIMC(imc)
+
+      })
+    })()
+  </script>
+
+  <!-- 
+<script src="./assets/js/main.js">
+    solução do profesor
+</script>-->
+
+</body>
+
+</html>
